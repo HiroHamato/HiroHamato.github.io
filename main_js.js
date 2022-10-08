@@ -1,26 +1,41 @@
-let tg = window.Telegram.WebApp; //получаем объект webapp телеграма 
+let tg = window.Telegram.WebApp;
 
 tg.expand(); 
 
-tg.MainButton.text = "Кнопка"; //изменяем текст кнопки 
-tg.MainButton.setText("КНОПКА"); //изменяем текст кнопки иначе
-tg.MainButton.textColor = "#F55353"; //изменяем цвет текста кнопки
-tg.MainButton.color = "#143F6B"; //изменяем цвет бэкграунда кнопки
-tg.MainButton.setParams({"color": "#143F6B"}); //так изменяются все параметры
+tg.MainButton.text = "Кнопка"; 
+tg.MainButton.setText("КНОПКА"); 
+tg.MainButton.textColor = "#F55353";
+tg.MainButton.color = "#143F6B";
+tg.MainButton.setParams({"color": "#143F6B"});
 
-let btn = document.getElementById("btn"); //получаем кнопку скрыть/показать 
+let res = document.getElementById("result");
+let btn = document.getElementById("btn");
+let SendBtn = document.getElementById("btn1");
+let inp = document.getElementById("input");
 
-btn.addEventListener('click', function(){ //вешаем событие на нажатие html-кнопки
-  if (tg.MainButton.isVisible){ //если кнопка показана 
-     tg.MainButton.hide() //скрываем кнопку 
+btn.addEventListener('click', function(){
+  if (tg.MainButton.isVisible){ 
+     tg.MainButton.hide()
   }
   else{ //иначе
-     tg.MainButton.show() //показываем 
+     tg.MainButton.show()
   }
 });
 
+let DataToSend="";
+
+inp.addEventListener('input',function(e){
+  DataToSend = e.target.value;
+  res.textContent = DataToSend;
+})
+
+SendBtn.addEventListener('click', function(){
+  tg.sendData("было написано: "+DataToSend);
+  DataToSend="";
+  res.textContent="Отправлено!";
+  inp.value="";
+});
 
 Telegram.WebApp.onEvent('mainButtonClicked', function(){
   tg.sendData("был тыкнут батон"); 
-  //при клике на основную кнопку отправляем данные в строковом виде
 });
