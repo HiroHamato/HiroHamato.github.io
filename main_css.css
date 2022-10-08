@@ -1,0 +1,11 @@
+body{
+	display: flex;
+	justify-content: center;
+}
+
+button{
+	background-color: #66ccff;
+	color: #ff9933;
+	margin-left: 1%;
+	border-radius: 30px;
+}
