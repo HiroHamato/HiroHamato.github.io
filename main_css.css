@@ -1,11 +1,17 @@
 body{
 	display: flex;
 	justify-content: center;
+	flex-direction: column;
+	text-align: center;
+	margin-left: 30%;
+	margin-right: 30%;
 }
 
 button{
+	margin-top: 10px;
 	background-color: #66ccff;
-	color: #ff9933;
-	margin-left: 1%;
+	color: #ff9933; 
 	border-radius: 30px;
+	margin-right: 10%;
+	margin-left: 10%;
 }
